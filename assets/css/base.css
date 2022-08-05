@@ -1,0 +1,345 @@
+:root {
+    --primary-color: #EE4D2D;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --text-hover-color: rgba(255, 255, 255, 0.7);
+    --header-height: 120px;
+    --navbar-height: 30px;
+    --header-width-search-height: calc(var(--header-height) - var(--navbar-height));
+    --header-search-btn-width: 60px;
+    --header-sort-bar-height: 40px;
+    --header-search-height: 40px
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+    width: 100%;
+}
+
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.66667%;
+}
+
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.33334%;
+}
+
+.mt-8 {
+    margin-top: 8px !important;
+}
+
+/* animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes headerNotifyShrink {
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    display: none;
+    animation: fadeIn linear 0.1s;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+.modal__body {
+    --growth-from: 0.7;
+    --growth-to: 1;
+    position: relative;
+    margin: auto;
+    z-index: 100;
+    animation: growth linear 0.1s;
+    transform-origin:center;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    /* justify-content: center; */
+}
+
+/* button style */
+
+.btn {
+    height: 34px;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin: 0 4px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6rem;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn.btn--size-s {
+    height: 32px;
+    font-size: 1.2rem;
+    padding: 0 8px;
+}
+
+.btn.btn--size-m {
+    width: 128px;
+}
+
+.btn.btn-normal:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn.btn--primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn.btn--primary:hover {
+    opacity: 0.92;
+}
+
+.btn.btn--disabled {
+    cursor: default;
+    color: #949494;;
+}
+
+.btn.btn-min-width {
+    min-width: 100px;
+}
+
+/* box */
+.box {
+    position: absolute;
+    background-color: var(--white-color);
+    border: 0.5px solid rgba(90, 89, 89, 0.22);
+    animation: headerNotifyGrowth ease-in 0.2s;
+    -webkit-animation: headerNotifyGrowth ease-in 0.2s;
+    -ms-zoom-animation: headerNotifyGrowth ease-in 0.2s;
+    will-change: opacity, transform;
+    z-index: 10;
+    border-radius: 2px;
+}
+
+.box-shadow {
+    box-shadow: 0 1px 4px #a5a2a2;
+}
+
+
+.box-before::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-width: 0 30px;
+    border-bottom-width: 20px;
+    border-style: solid;
+    border-color: transparent transparent var(--white-color) transparent;
+}
+
+.box-before::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 10px;
+}
+
+/* list */
+.list {
+    list-style: none;
+}
+
+/* selection */
+
+.select-input {
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+}
+
+.select-input__icon {
+    font-size: 1.2rem;
+}
+
+.select-input__list {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    list-style: none;
+    padding-left: 0;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    /* overflow: hidden; */
+    display: none;
+    padding: 8px 0px;
+    z-index: 10;
+}
+
+.select-input__list::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 3px;
+    top: -2px;
+    left: 0;
+    right: 0;
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__item {
+    background-color: var(--white-color);
+    padding: 4px 16px;
+}
+
+.select-input__link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.select-input__link:hover {
+    color: var(--primary-color);
+    /* padding: 4px 0; */
+}
+
+/* pagination */
+
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-item {
+    margin: 0 10px;
+}
+
+.pagination-item__active .pagination-item__link {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item__active .pagination-item__link:hover {
+    color: var(--white-color);
+}
+
+.pagination-item__link {
+    --height : 30px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #939393;
+    text-decoration: none;
+    min-width: 40px;
+    height: var(--height);
+    line-height: var(--height);
+    display: block;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.pagination-item__link:hover {
+    color: var(--primary-color);
+}
+
+.pagination-item__link-no-click:hover {
+    color: #939393;
+}
+
+.pagination-item__icon {
+    font-size: 1.6rem;
+}
